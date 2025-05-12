@@ -4,7 +4,8 @@ require 'json'
 
 class GamesController < ApplicationController
   def new
-    @letters = ALPHABET.sample(10)
+    vowels = %w[a b c d e]
+    @letters = ALPHABET.sample(8) + vowels.sample(2)
   end
 
   def score
@@ -26,5 +27,11 @@ class GamesController < ApplicationController
       @message = check_api["found"] ? "Sorry but #{@word} can't be built out of #{@letters.join(',').upcase}" : "Sorry but #{@word} is not an english word"
       @score = 0
     end
+  end
+
+  def reset
+    session.delete(:score)
+
+    redirect_to new_path
   end
 end

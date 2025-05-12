@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   # root "posts#index"
   get "/new", to: "games#new"
   post "/score", to: "games#score"
+  post "/reset", to: "games#reset"
 end
