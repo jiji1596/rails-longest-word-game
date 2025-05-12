@@ -24,6 +24,7 @@ class GamesController < ApplicationController
       session[:score] += @score
     else
       @message = check_api["found"] ? "Sorry but #{@word} can't be built out of #{@letters.join(',').upcase}" : "Sorry but #{@word} is not an english word"
+      @score = 0
     end
   end
 end

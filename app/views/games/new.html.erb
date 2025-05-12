@@ -1,16 +1,26 @@
-<h1>NEW GAME</h1>
+<div class="container d-flex flex-column justify-content-center align-items-center">
+  <h1>NEW GAME</h1>
 
-<% @letters.each do |letter| %>
-<%= letter %>
-<% end %>
 
-<form action="/score" method="post" data-turbo="false">
-  <!-- ... -->
+  <ul class="d-flex " style="list-style: none">
+    <% @letters.each do |letter| %>
+        <li class="p-3 m-3 fs-3 fw-bold border border-4 border-dark"><%= letter %></li>
+    <% end %>
+  </ul>
 
-  <input id="token" name="letters" type="hidden" value="<%= @letters.join %>" />
-  <input id="token" name="start_time" type="hidden" value="<%= Time.now %>" />
-  <input type="text" name="word" placeholder="Type your word here" >
-  <input type="submit" value="Submit">
 
-  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-</form>
+  <form action="/score" method="post" data-turbo="false" class="d-flex w-50">
+    <!-- ... -->
+
+    <input id="token" name="letters" type="hidden" value="<%= @letters.join %>" />
+    <input id="token" name="start_time" type="hidden" value="<%= Time.now %>" />
+    <input type="text" name="word" placeholder="Type your word here" class="form-control">
+    <input type="submit" value="Submit" class="btn btn-primary">
+
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  </form>
+
+
+
+
+</div>
